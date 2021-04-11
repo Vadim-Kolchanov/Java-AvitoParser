@@ -58,6 +58,7 @@ public class WriteReadToFile implements WriteReadFile {
             }
         } catch (AllPagesHaveBeenParsing ex) {
             System.out.println("Parser is finished!");
+            System.out.println(ex.getMessage());
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }

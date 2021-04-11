@@ -18,7 +18,8 @@ public class Main {
                 "URLs",
                 new PageWithApartments(
                         new ConnectCityToMorePages(
-                                city
+                                city,
+                                1
                         )
                 )
         ).write();
