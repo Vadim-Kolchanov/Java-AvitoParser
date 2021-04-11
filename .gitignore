@@ -1,0 +1,10 @@
+.idea/*
+out/
+src/DataParsedPageCity
+src/DataURLsCity
+
+*.war
+*.jar
+*.ear
+
+JavaParserAvito.iml
