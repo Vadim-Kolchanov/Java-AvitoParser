@@ -37,7 +37,7 @@ public class WriteReadToFile implements WriteReadFile {
 
     @Override
     public Path fileInit() throws IOException {
-        String pathToFile = pathToFolder + "\\" + prefix + "-" + page.getCity().name() + ".csv";
+        String pathToFile = pathToFolder + "\\" + prefix + "-" + page.getNameCity() + ".csv";
         Path path = Paths.get(pathToFile);
         if (Files.exists(path)) {
             return path;

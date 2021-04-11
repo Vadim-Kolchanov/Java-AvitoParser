@@ -45,7 +45,7 @@ public class PageWithApartments implements Page {
     }
 
     @Override
-    public NameOfCitiesAndURLs getCity() {
-        return connect.getCity();
+    public String getNameCity() {
+        return connect.getNameCity();
     }
 }

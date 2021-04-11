@@ -66,8 +66,8 @@ public class ConnectToMorePages implements Connect {
     }
 
     @Override
-    public NameOfCitiesAndURLs getCity() {
-        return connectToPage.getCity();
+    public String getNameCity() {
+        return connectToPage.getNameCity();
     }
 
     @Override

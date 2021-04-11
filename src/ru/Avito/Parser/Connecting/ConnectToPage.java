@@ -36,7 +36,7 @@ public class ConnectToPage implements Connect {
     }
 
     @Override
-    public NameOfCitiesAndURLs getCity() {
-        return city;
+    public String getNameCity() {
+        return city.name();
     }
 }

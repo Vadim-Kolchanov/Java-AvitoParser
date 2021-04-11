@@ -6,6 +6,6 @@ package ru.Avito.Parser.Cities;
  */
 public interface City {
 
-    public NameOfCitiesAndURLs getCity();
+    public String getNameCity();
 
 }
