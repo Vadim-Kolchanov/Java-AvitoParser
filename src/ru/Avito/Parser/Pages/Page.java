@@ -5,7 +5,6 @@ import ru.Avito.Parser.Cities.City;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsing;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @Project JavaParserAvito

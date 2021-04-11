@@ -3,7 +3,6 @@ package ru.Avito.Parser.Pages;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import ru.Avito.Parser.Connecting.Connect;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsing;
 
