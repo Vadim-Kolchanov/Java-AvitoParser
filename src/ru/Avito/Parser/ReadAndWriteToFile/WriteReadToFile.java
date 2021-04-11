@@ -18,7 +18,7 @@ public class WriteReadToFile implements WriteReadFile {
 
     private final String pathToFolder;
     private final String prefix;
-    private Page page;
+    private final Page page;
     private final Path file;
 
     public WriteReadToFile(String pathToFolder, String prefix, Page page) throws IOException {

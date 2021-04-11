@@ -1,5 +1,5 @@
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
-import ru.Avito.Parser.Connecting.ConnectToMorePages;
+import ru.Avito.Parser.Connecting.ConnectCityToMorePages;
 import ru.Avito.Parser.Pages.PageWithApartments;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadToFile;
 
@@ -17,7 +17,7 @@ public class Main {
                 "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
                 "URLs",
                 new PageWithApartments(
-                        new ConnectToMorePages(
+                        new ConnectCityToMorePages(
                                 city
                         )
                 )

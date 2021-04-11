@@ -3,7 +3,7 @@ package ru.Avito.Parser.Pages;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.Connecting.Connect;
+import ru.Avito.Parser.Connecting.ConnectCity;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsing;
 
 import java.io.IOException;
@@ -14,15 +14,15 @@ import java.io.IOException;
  */
 public class PageWithApartments implements Page {
 
-    private Connect connect;
+    private ConnectCity connectCity;
 
-    public PageWithApartments(Connect connect) {
-        this.connect = connect;
+    public PageWithApartments(ConnectCity connectCity) {
+        this.connectCity = connectCity;
     }
 
     @Override
     public Elements getElements() throws IOException, AllPagesHaveBeenParsing {
-        Document connectToPage = connect.getConnect();
+        Document connectToPage = connectCity.getConnect();
         if (connectToPage == null) throw new AllPagesHaveBeenParsing();
         return connectToPage.getElementsByAttributeValue(
                 "class",
@@ -45,6 +45,6 @@ public class PageWithApartments implements Page {
 
     @Override
     public String getNameCity() {
-        return connect.getNameCity();
+        return connectCity.getNameCity();
     }
 }
