@@ -13,9 +13,11 @@ import java.nio.file.Path;
 public class WriteReadApartmentToFile implements WriteReadFile {
 
     private final WriteReadFile original;
+    private final Path file;
 
-    public WriteReadApartmentToFile(WriteReadFile original) {
+    public WriteReadApartmentToFile(WriteReadFile original) throws IOException {
         this.original = original;
+        this.file = fileInit();
     }
 
     @Override
@@ -37,7 +39,7 @@ public class WriteReadApartmentToFile implements WriteReadFile {
                      + "Сезон;"
                      + "Год;"
                      + "Стоимость квартиры;"
-                     + "URL"
+                     + "URL\n"
             );
         }
         return file;
