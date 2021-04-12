@@ -3,9 +3,7 @@ package ru.Avito.Parser.ReadAndWriteToFile;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsing;
 import ru.Avito.Parser.Pages.Page;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,6 +44,11 @@ public class WriteReadToFile implements WriteReadFile {
     }
 
     @Override
+    public InputStream read() throws IOException {
+        return new FileInputStream(file.toFile());
+    }
+
+    @Override
     public void write() throws IOException {
         try {
             while (true) {
@@ -62,6 +65,8 @@ public class WriteReadToFile implements WriteReadFile {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
+
+
 
 
     }

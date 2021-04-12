@@ -3,6 +3,7 @@ package ru.Avito.Parser.ReadAndWriteToFile;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -43,6 +44,11 @@ public class WriteReadApartmentToFile implements WriteReadFile {
             );
         }
         return file;
+    }
+
+    @Override
+    public InputStream read() throws IOException {
+        return this.original.read();
     }
 
     @Override

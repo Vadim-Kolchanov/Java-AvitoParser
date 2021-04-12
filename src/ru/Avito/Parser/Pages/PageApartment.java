@@ -16,12 +16,14 @@ public class PageApartment implements Page {
 
     private final Connect connect;
     private final NameOfCitiesAndURLs city;
-    private final WriteReadFile readFile;
+    private final WriteReadFile readFileWithURls;
+    private final WriteReadFile readFileWithApartments;
 
-    public PageApartment(NameOfCitiesAndURLs city, Connect connect, WriteReadFile readFile) {
+    public PageApartment(NameOfCitiesAndURLs city, Connect connect, WriteReadFile readFileWithURls, WriteReadFile readFileWithApartments) {
         this.city = city;
         this.connect = connect;
-        this.readFile = readFile;
+        this.readFileWithURls = readFileWithURls;
+        this.readFileWithApartments = readFileWithApartments;
     }
 
     @Override
