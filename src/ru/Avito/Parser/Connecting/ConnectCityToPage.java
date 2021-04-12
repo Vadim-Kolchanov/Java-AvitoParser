@@ -14,13 +14,13 @@ public class ConnectCityToPage implements ConnectCity {
     private final NameOfCitiesAndURLs city;
     private final int pageNumber;
 
-    ConnectCityToPage(NameOfCitiesAndURLs city) {
+    public ConnectCityToPage(NameOfCitiesAndURLs city) {
         this.city = city;
         this.pageNumber = 1;
     }
 
-    ConnectCityToPage(NameOfCitiesAndURLs city, int pageNumber) {
-        this.city = city;
+    ConnectCityToPage(String city, int pageNumber) {
+        this.city = NameOfCitiesAndURLs.valueOf(city);
         this.pageNumber = pageNumber;
     }
 

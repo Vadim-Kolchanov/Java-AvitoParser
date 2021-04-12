@@ -1,7 +1,6 @@
 package ru.Avito.Parser.Connecting;
 
 import org.jsoup.nodes.Document;
-import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import ru.Avito.Parser.Pages.Pagination;
 
 import java.io.IOException;
@@ -13,20 +12,16 @@ import java.io.IOException;
 public class ConnectCityToMorePages implements ConnectCity {
 
     private ConnectCity connectCityToPage;
-    private final NameOfCitiesAndURLs city;
     private int pagesLeft;
 
-    public ConnectCityToMorePages(NameOfCitiesAndURLs city, int limitPage) throws IOException {
-        this.connectCityToPage = new ConnectCityToPage(city);
-        this.city = city;
+    public ConnectCityToMorePages(int limitPage, ConnectCity connectCity) throws IOException {
+        this.connectCityToPage = connectCity;
         this.pagesLeft = new Pagination(this.connectCityToPage)
                 .checkLimit(limitPage);
-
     }
 
-    public ConnectCityToMorePages(NameOfCitiesAndURLs city) throws IOException {
-        this.connectCityToPage = new ConnectCityToPage(city);
-        this.city = city;
+    public ConnectCityToMorePages(ConnectCity connectCity) throws IOException {
+        this.connectCityToPage = connectCity;
         this.pagesLeft = new Pagination(this.connectCityToPage)
                 .getPagination();
     }
@@ -40,8 +35,8 @@ public class ConnectCityToMorePages implements ConnectCity {
     public Document getConnect() throws IOException {
         if (this.pagesLeft > 0) {
             System.out.println("Номер страницы: " + this.pagesLeft);
+            this.connectCityToPage = new ConnectCityToPage(getNameCity(), this.pagesLeft);
             this.pagesLeft--;
-            this.connectCityToPage = new ConnectCityToPage(this.city, this.pagesLeft);
             return this.connectCityToPage.getConnect();
         }
         return null;
