@@ -2,6 +2,7 @@ import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import ru.Avito.Parser.Connecting.ConnectCityToMorePages;
 import ru.Avito.Parser.Connecting.ConnectCityToPage;
 import ru.Avito.Parser.Pages.PageWithApartments;
+import ru.Avito.Parser.ReadAndWriteToFile.Prefix;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteApartmentToFile;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadToFile;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteURLsToFile;
@@ -45,7 +46,7 @@ public class Main {
         new WriteURLsToFile(
             new WriteReadToFile(
                         "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
-                        "URLs",
+                        Prefix.URLS,
                         city
             ),
             new PageWithApartments(
@@ -66,7 +67,7 @@ public class Main {
         new WriteApartmentToFile(
             new WriteReadToFile(
                         "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
-                        "Apartment",
+                        Prefix.APARTMENT,
                         city
             ),
             new PageWithApartments(

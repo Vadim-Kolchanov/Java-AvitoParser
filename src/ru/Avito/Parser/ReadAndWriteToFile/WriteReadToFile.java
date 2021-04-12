@@ -12,25 +12,18 @@ public class WriteReadToFile implements WriteReadFile {
 
     private final File file;
     private final String pathToFolder;
-    private final String prefix;
+    private final Prefix prefix;
     private final NameOfCitiesAndURLs city;
 
-    public WriteReadToFile(String pathToFolder, String prefix, NameOfCitiesAndURLs city) throws IOException {
+    public WriteReadToFile(String pathToFolder, Prefix prefix, NameOfCitiesAndURLs city) throws IOException {
         this.pathToFolder = pathToFolder;
         this.prefix = prefix;
         this.city = city;
         this.file = fileInit();
     }
 
-    public WriteReadToFile(String pathToFolder, NameOfCitiesAndURLs city) throws IOException {
-        this.pathToFolder = pathToFolder;
-        this.prefix = "";
-        this.city = city;
-        this.file = fileInit();
-    }
-
     private File fileInit() {
-        String pathToFile = pathToFolder + "\\" + prefix + "-" + city.name() + ".csv";
+        String pathToFile = pathToFolder + "\\" + prefix.name() + "-" + city.name() + ".csv";
         return new File(pathToFile);
     }
 
