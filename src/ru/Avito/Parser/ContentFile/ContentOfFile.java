@@ -3,6 +3,7 @@ package ru.Avito.Parser.ContentFile;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -30,9 +31,9 @@ public class ContentOfFile implements ContentFile {
                                     )
         ) {
             while (reader.ready()) {
-                content.add(reader.readLine());
+                content.add(reader.readLine() + "\n");
             }
-        }
+        } catch (FileNotFoundException ignored) {}
         return content;
     }
 }

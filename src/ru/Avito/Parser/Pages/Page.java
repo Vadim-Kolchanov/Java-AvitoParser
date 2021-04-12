@@ -1,9 +1,10 @@
 package ru.Avito.Parser.Pages;
 
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsing;
+import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Project JavaParserAvito
@@ -11,10 +12,8 @@ import java.io.IOException;
  */
 public interface Page {
 
-    public Elements getElements() throws IOException, AllPagesHaveBeenParsing;
+    Elements getElements() throws IOException, AllPagesHaveBeenParsingException;
 
-    public StringBuilder getContent() throws IOException, AllPagesHaveBeenParsing;
-
-    public String getNameCity();
+    List<String> getContent() throws IOException, AllPagesHaveBeenParsingException;
 
 }

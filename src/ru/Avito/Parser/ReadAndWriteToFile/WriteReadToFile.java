@@ -1,12 +1,8 @@
 package ru.Avito.Parser.ReadAndWriteToFile;
 
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsing;
-import ru.Avito.Parser.Pages.Page;
+import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * @Project JavaParserAvito
@@ -14,60 +10,51 @@ import java.nio.file.Paths;
  */
 public class WriteReadToFile implements WriteReadFile {
 
+    private final File file;
     private final String pathToFolder;
     private final String prefix;
-    private final Page page;
-    private final Path file;
+    private final NameOfCitiesAndURLs city;
 
-    public WriteReadToFile(String pathToFolder, String prefix, Page page) throws IOException {
+    public WriteReadToFile(String pathToFolder, String prefix, NameOfCitiesAndURLs city) throws IOException {
         this.pathToFolder = pathToFolder;
         this.prefix = prefix;
-        this.page = page;
+        this.city = city;
         this.file = fileInit();
     }
 
-    public WriteReadToFile(String pathToFolder, Page page) throws IOException {
+    public WriteReadToFile(String pathToFolder, NameOfCitiesAndURLs city) throws IOException {
         this.pathToFolder = pathToFolder;
         this.prefix = "";
-        this.page = page;
+        this.city = city;
         this.file = fileInit();
+    }
+
+    private File fileInit() {
+        String pathToFile = pathToFolder + "\\" + prefix + "-" + city.name() + ".csv";
+        return new File(pathToFile);
     }
 
     @Override
-    public Path fileInit() throws IOException {
-        String pathToFile = pathToFolder + "\\" + prefix + "-" + page.getNameCity() + ".csv";
-        Path path = Paths.get(pathToFile);
-        if (Files.exists(path)) {
-            return path;
-        }
-        return Files.createFile(path);
+    public boolean fileIsEmpty() {
+        return file.length() == 0;
     }
 
     @Override
     public InputStream read() throws IOException {
-        return new FileInputStream(file.toFile());
+        return new FileInputStream(file);
     }
 
     @Override
-    public void write() throws IOException {
-        try {
-            while (true) {
-                StringBuilder list = page.getContent();
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file.toFile(), true))) {
-                    writer.write(list.toString());
-                    writer.flush();
-                }
-                Thread.sleep(3000);
-            }
-        } catch (AllPagesHaveBeenParsing ex) {
-            System.out.println("Parser is finished!");
-            System.out.println(ex.getMessage());
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
+    public void write(String content, boolean append) throws IOException {
+      try (BufferedWriter writer = new BufferedWriter(
+                                       new FileWriter(
+                                               file,
+                                               append
+                                       )
+                                   )
+        ) {
+          writer.write(content);
+          writer.flush();
         }
-
-
-
-
     }
 }

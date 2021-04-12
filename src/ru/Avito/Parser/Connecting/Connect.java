@@ -10,5 +10,5 @@ import java.io.IOException;
  */
 public interface Connect {
 
-    public Document getConnect() throws IOException;
+    Document getConnect() throws IOException;
 }

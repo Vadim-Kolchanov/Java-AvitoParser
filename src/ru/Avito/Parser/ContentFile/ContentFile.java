@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface ContentFile {
 
-    public List<String> getContent() throws IOException;
+    List<String> getContent() throws IOException;
 }

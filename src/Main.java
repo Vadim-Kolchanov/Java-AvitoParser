@@ -2,8 +2,9 @@ import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import ru.Avito.Parser.Connecting.ConnectCityToMorePages;
 import ru.Avito.Parser.Connecting.ConnectCityToPage;
 import ru.Avito.Parser.Pages.PageWithApartments;
-import ru.Avito.Parser.ReadAndWriteToFile.WriteReadApartmentToFile;
+import ru.Avito.Parser.ReadAndWriteToFile.WriteApartmentToFile;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadToFile;
+import ru.Avito.Parser.ReadAndWriteToFile.WriteURLsToFile;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,17 +42,20 @@ public class Main {
     }
 
     public void parseURlsApartments(NameOfCitiesAndURLs city) throws Exception {
-        new WriteReadToFile(
-                "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
-                "URLs",
-                new PageWithApartments(
-                        new ConnectCityToMorePages(
-                                1,
-                                new ConnectCityToPage(
-                                        city
-                                )
-                        )
+        new WriteURLsToFile(
+            new WriteReadToFile(
+                        "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
+                        "URLs",
+                        city
+            ),
+            new PageWithApartments(
+                new ConnectCityToMorePages(
+                                        1,
+                                        new ConnectCityToPage(
+                                                city
+                                        )
                 )
+            )
         ).write();
     }
 
@@ -59,15 +63,16 @@ public class Main {
         // В разработке...
         System.exit(0);
 
-        new WriteReadApartmentToFile(
+        new WriteApartmentToFile(
             new WriteReadToFile(
                         "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
-                        "URLs",
-                new PageWithApartments(
-                    new ConnectCityToMorePages(
+                        "Apartment",
+                        city
+            ),
+            new PageWithApartments(
+                new ConnectCityToMorePages(
                                         1,
                                         new ConnectCityToPage(city)
-                    )
                 )
             )
         ).write();

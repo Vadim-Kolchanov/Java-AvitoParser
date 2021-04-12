@@ -9,17 +9,17 @@ import java.util.List;
  */
 public class StorageContentOfFile implements ContentFile {
 
-    private final ContentFile contentFile;
+    private final ContentFile contentOfFile;
     private List<String> content;
 
-    public StorageContentOfFile(ContentFile contentFile) {
-        this.contentFile = contentFile;
+    public StorageContentOfFile(ContentFile contentOfFile) {
+        this.contentOfFile = contentOfFile;
     }
 
     @Override
     public List<String> getContent() throws IOException {
-        if (content.isEmpty()) {
-            this.content = contentFile.getContent();
+        if (content == null) {
+            this.content = contentOfFile.getContent();
         }
         return content;
     }

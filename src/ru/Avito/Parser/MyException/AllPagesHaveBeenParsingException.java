@@ -4,9 +4,9 @@ package ru.Avito.Parser.MyException;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class AllPagesHaveBeenParsing extends Exception {
+public class AllPagesHaveBeenParsingException extends Exception {
 
-    public AllPagesHaveBeenParsing() {
+    public AllPagesHaveBeenParsingException() {
         super("All pages have been successfully parsed. Don't worry :)");
     }
 

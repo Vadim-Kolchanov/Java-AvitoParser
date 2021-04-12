@@ -10,6 +10,6 @@ import java.io.IOException;
  */
 public interface ConnectCity extends Connect {
 
-    public String getNameCity();
+    String getNameCity();
 
 }

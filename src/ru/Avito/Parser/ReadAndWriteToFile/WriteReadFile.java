@@ -10,10 +10,10 @@ import java.nio.file.Path;
  */
 public interface WriteReadFile {
 
-    public Path fileInit() throws IOException;
+    boolean fileIsEmpty() throws IOException;
 
-    public void write() throws IOException;
+    void write(String content, boolean append) throws IOException;
 
-    public InputStream read() throws IOException;
+    InputStream read() throws IOException;
 
 }

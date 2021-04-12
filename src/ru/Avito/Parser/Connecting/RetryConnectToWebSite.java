@@ -19,11 +19,13 @@ public class RetryConnectToWebSite implements Connect {
 
     @Override
     public Document getConnect() throws IOException {
+        String messageException = "Error in RetryConnectToWebSite";
         while (this.attempts != 0) {
             try {
                 return original.getConnect();
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                messageException = ex.getMessage();
+                System.out.println(messageException);
                 System.out.println("Ooops! Error! Retrying connect. Attempts left: " + this.attempts);
                 this.attempts--;
                 try {
@@ -34,6 +36,6 @@ public class RetryConnectToWebSite implements Connect {
                 return getConnect();
             }
         }
-        throw new IOException();
+        throw new IOException(messageException);
     }
 }
