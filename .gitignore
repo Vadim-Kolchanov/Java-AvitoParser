@@ -3,6 +3,8 @@ out/
 src/DataParsedPageCity
 src/DataURLsCity
 
+src/TestClass.java
+
 *.war
 *.jar
 *.ear
