@@ -32,8 +32,14 @@ public class Main {
             );
             switch (start.getNumber()) {
                 case 0 -> System.exit(1);
-                case 1 -> start.parseURlsApartments(city);
-                case 2 -> start.parseParametersApartments(city);
+                case 1 -> start.parseURlsApartments(
+                                city,
+                               "D:\\Java\\JavaParserAvito\\src\\DataURLsCity"
+                          );
+                case 2 -> start.parseParametersApartments(
+                                city,
+                               "D:\\Java\\JavaParserAvito\\src\\DataURLsCity"
+                          );
                 default -> {
                     System.out.println("Введите другое число");
                     isFinished = false;
@@ -42,10 +48,10 @@ public class Main {
         } while (!isFinished);
     }
 
-    public void parseURlsApartments(NameOfCitiesAndURLs city) throws Exception {
+    public void parseURlsApartments(NameOfCitiesAndURLs city, String pathToFolder) throws Exception {
         new WriteURLsToFile(
             new WriteReadToFile(
-                        "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
+                        pathToFolder,
                         Prefix.URLS,
                         city
             ),
@@ -60,25 +66,24 @@ public class Main {
         ).write();
     }
 
-    public void parseParametersApartments(NameOfCitiesAndURLs city) throws Exception {
+    public void parseParametersApartments(NameOfCitiesAndURLs city, String pathToFolder) throws Exception {
         // В разработке...
         System.exit(0);
 
         new WriteApartmentToFile(
             new WriteReadToFile(
-                        "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
+                        pathToFolder,
                         Prefix.APARTMENT,
                         city
             ),
             new PageWithApartments(
                 new ConnectCityToMorePages(
-                                        1,
-                                        new ConnectCityToPage(city)
+                            1,
+                            new ConnectCityToPage(city)
                 )
             )
         ).write();
     }
-
 
    public int getNumber() {
         while (true) {
