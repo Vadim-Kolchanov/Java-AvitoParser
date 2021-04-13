@@ -1,10 +1,14 @@
 package ru.Avito.Parser.Pages;
 
+import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
+import ru.Avito.Parser.Connecting.ConnectToWebSite;
+import ru.Avito.Parser.Connecting.RetryConnectToWebSite;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,22 +17,31 @@ import java.util.List;
  */
 public class PageApartment implements Page {
 
-    private final NameOfCitiesAndURLs city;
-    private final URLsNeedParsing urls;
+    private final String urlPageApartment;
+    private Document connect;
 
-    public PageApartment(NameOfCitiesAndURLs city, URLsNeedParsing urlsNeedParsing) {
-        this.city = city;
-        this.urls = urlsNeedParsing;
+    public PageApartment(String urlPageApartment) {
+        this.urlPageApartment = urlPageApartment;
     }
 
     @Override
-    public Elements getElements() throws IOException, AllPagesHaveBeenParsingException {
-        return null;
+    public Elements getElements() throws IOException {
+        if (this.connect == null) {
+            this.connect = new RetryConnectToWebSite(
+                               new ConnectToWebSite(
+                                    this.urlPageApartment
+                               )
+            ).getConnect();
+        }
+        return this.connect.getElementsByAttributeValue(
+                "class",
+                "item-view js-item-view "
+        );
     }
 
     @Override
-    public List<String> getContent() throws IOException, AllPagesHaveBeenParsingException {
-        return null;
+    public List<String> getContent() throws IOException {
+        return new ArrayList<String>();
     }
 
 }

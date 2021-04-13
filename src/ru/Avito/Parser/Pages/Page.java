@@ -1,7 +1,6 @@
 package ru.Avito.Parser.Pages;
 
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.List;
  */
 public interface Page {
 
-    Elements getElements() throws IOException, AllPagesHaveBeenParsingException;
+    Elements getElements() throws IOException;
 
-    List<String> getContent() throws IOException, AllPagesHaveBeenParsingException;
+    List<String> getContent() throws IOException;
 
 }

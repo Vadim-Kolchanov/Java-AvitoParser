@@ -1,7 +1,6 @@
-package ru.Avito.Parser.Pages;
+package ru.Avito.Parser.Parsing.ParsingApartment;
 
 import ru.Avito.Parser.ContentFile.ContentFile;
-import ru.Avito.Parser.ContentFile.StorageContentOfFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +38,20 @@ public class URLsNeedParsing {
         urlsForParsing.removeAll(
                 getURLsOfContentApartment()
         );
-        return urlsForParsing;
+        return deleteAllEnterInList(urlsForParsing);
+    }
+
+    public List<String> deleteAllEnterInList(List<String> list) {
+        List<String> newList = new ArrayList<>();
+        for (String line: list) {
+            newList.add(
+                line.replace(
+                        "\n",
+                        ""
+                )
+            );
+        }
+        return newList;
     }
 
 

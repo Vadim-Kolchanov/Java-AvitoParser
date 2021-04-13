@@ -1,7 +1,8 @@
 package ru.Avito.Parser.Pages;
 
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.Connecting.ConnectCity;
+import ru.Avito.Parser.Connecting.ConnectToWebSite;
+import ru.Avito.Parser.Connecting.RetryConnectToWebSite;
 
 import java.io.IOException;
 import java.net.URL;
@@ -13,10 +14,10 @@ import java.util.Scanner;
  */
 public class Pagination {
 
-    private final ConnectCity connectCityToPage;
+    private final String urlPage;
 
-    public Pagination(ConnectCity connectCityToPage) throws IOException {
-        this.connectCityToPage = connectCityToPage;
+    public Pagination(String urlPage) throws IOException {
+        this.urlPage = urlPage;
     }
 
     public int checkLimit(int limitPage) throws IOException {
@@ -46,12 +47,13 @@ public class Pagination {
     }
 
     public Elements getBlockWithPageNumbers() throws IOException {
-        return connectCityToPage.getConnect()
+        return new RetryConnectToWebSite(
+                   new ConnectToWebSite(urlPage)
+        ).getConnect()
                 .getElementsByAttributeValue(
-                        "class",
-                        "pagination-pages clearfix"
-                )
-                .get(0)
+                                "class",
+                                "pagination-pages clearfix"
+                ).get(0)
                 .children();
     }
 

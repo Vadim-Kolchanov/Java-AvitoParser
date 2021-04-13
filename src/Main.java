@@ -1,11 +1,13 @@
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
-import ru.Avito.Parser.Connecting.ConnectCityToMorePages;
-import ru.Avito.Parser.Connecting.ConnectCityToPage;
+import ru.Avito.Parser.ContentFile.ContentOfFile;
+import ru.Avito.Parser.ContentFile.StorageContentOfFile;
 import ru.Avito.Parser.Pages.PageWithApartments;
+import ru.Avito.Parser.Parsing.ParsingApartment.URLsNeedParsing;
 import ru.Avito.Parser.ReadAndWriteToFile.Prefix;
-import ru.Avito.Parser.ReadAndWriteToFile.WriteApartmentToFile;
+import ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile.WriteApartmentsToFile;
+import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadToFile;
-import ru.Avito.Parser.ReadAndWriteToFile.WriteURLsToFile;
+import ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile.WriteURLsToFile;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +24,7 @@ public class Main {
         System.out.println(city.name() + " " + city.getURL());
 
         Main start = new Main();
-        boolean isFinished = true;
+        boolean isFinished = false;
         do {
             System.out.println(
                     "\n"
@@ -31,55 +33,66 @@ public class Main {
                             + "Введите 0, чтобы выйти"
             );
             switch (start.getNumber()) {
-                case 0 -> System.exit(1);
+                case 0 -> isFinished = true;
                 case 1 -> start.parseURlsApartments(
                                 city,
                                "D:\\Java\\JavaParserAvito\\src\\DataURLsCity"
                           );
                 case 2 -> start.parseParametersApartments(
+                                1,
                                 city,
+                               "D:\\Java\\JavaParserAvito\\src\\DataParsedPageCity",
                                "D:\\Java\\JavaParserAvito\\src\\DataURLsCity"
+
                           );
                 default -> {
                     System.out.println("Введите другое число");
-                    isFinished = false;
                 }
             }
         } while (!isFinished);
     }
 
-    public void parseURlsApartments(NameOfCitiesAndURLs city, String pathToFolder) throws Exception {
+    public void parseURlsApartments(NameOfCitiesAndURLs city, String pathToFolderWithUrls) throws Exception {
+        WriteReadFile writeReadToFileWithURLs = new WriteReadToFile(
+                pathToFolderWithUrls,
+                Prefix.URLS,
+                city
+        );
         new WriteURLsToFile(
-            new WriteReadToFile(
-                        pathToFolder,
-                        Prefix.URLS,
-                        city
-            ),
-            new PageWithApartments(
-                new ConnectCityToMorePages(
-                                        1,
-                                        new ConnectCityToPage(
-                                                city
-                                        )
-                )
-            )
+            writeReadToFileWithURLs,
+                1,
+                city
         ).write();
     }
 
-    public void parseParametersApartments(NameOfCitiesAndURLs city, String pathToFolder) throws Exception {
-        // В разработке...
-        System.exit(0);
-
-        new WriteApartmentToFile(
-            new WriteReadToFile(
-                        pathToFolder,
-                        Prefix.APARTMENT,
-                        city
-            ),
-            new PageWithApartments(
-                new ConnectCityToMorePages(
-                            1,
-                            new ConnectCityToPage(city)
+    public void parseParametersApartments(int indexCity,
+                                          NameOfCitiesAndURLs city,
+                                          String pathToFolderWithApartments,
+                                          String pathToFolderWithUrls
+    ) throws Exception {
+        WriteReadFile writeReadToFileWithApartments = new WriteReadToFile(
+                                                                pathToFolderWithApartments,
+                                                                Prefix.APARTMENT,
+                                                                city
+        );
+        WriteReadFile writeReadToFileWithURLs = new WriteReadToFile(
+                                                         pathToFolderWithUrls,
+                                                         Prefix.URLS,
+                                                         city
+        );
+        new WriteApartmentsToFile(
+            indexCity,
+            writeReadToFileWithApartments,
+            new URLsNeedParsing(
+                new StorageContentOfFile(
+                    new ContentOfFile(
+                            writeReadToFileWithURLs
+                    )
+                ),
+                new StorageContentOfFile(
+                    new ContentOfFile(
+                              writeReadToFileWithApartments
+                    )
                 )
             )
         ).write();

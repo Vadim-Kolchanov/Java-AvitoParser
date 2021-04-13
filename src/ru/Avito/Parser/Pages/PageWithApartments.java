@@ -1,9 +1,8 @@
 package ru.Avito.Parser.Pages;
 
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.Connecting.ConnectCity;
+import ru.Avito.Parser.Connecting.Connect;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 
 import java.io.IOException;
@@ -16,24 +15,23 @@ import java.util.List;
  */
 public class PageWithApartments implements Page {
 
-    private ConnectCity connectCity;
+    private Connect connectToWebSite;
 
-    public PageWithApartments(ConnectCity connectCity) {
-        this.connectCity = connectCity;
+    public PageWithApartments(Connect connectToWebSite) {
+        this.connectToWebSite = connectToWebSite;
     }
 
     @Override
-    public Elements getElements() throws IOException, AllPagesHaveBeenParsingException {
-        Document connectToPage = connectCity.getConnect();
-        if (connectToPage == null) throw new AllPagesHaveBeenParsingException();
-        return connectToPage.getElementsByAttributeValue(
-                "class",
-                "iva-item-root-G3n7v photo-slider-slider-3tEix iva-item-list-2_PpT iva-item-redesign-1OBTh items-item-1Hoqq items-listItem-11orH items-redesignItem-1EDEr js-catalog-item-enum"
+    public Elements getElements() throws IOException {
+        return this.connectToWebSite.getConnect()
+                .getElementsByAttributeValue(
+                        "class",
+                        "iva-item-root-G3n7v photo-slider-slider-3tEix iva-item-list-2_PpT iva-item-redesign-1OBTh items-item-1Hoqq items-listItem-11orH items-redesignItem-1EDEr js-catalog-item-enum"
         );
     }
 
     @Override
-    public List<String> getContent() throws IOException, AllPagesHaveBeenParsingException {
+    public List<String> getContent() throws IOException {
         List<String> listURLs = new ArrayList<String>();
         for (Element element: getElements()) {
             String href = element.getElementsByAttributeValue("class", "iva-item-titleStep-2bjuh")
