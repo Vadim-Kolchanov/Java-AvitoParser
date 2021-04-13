@@ -15,7 +15,7 @@ public class WriteReadToFile implements WriteReadFile {
     private final Prefix prefix;
     private final NameOfCitiesAndURLs city;
 
-    public WriteReadToFile(String pathToFolder, Prefix prefix, NameOfCitiesAndURLs city) throws IOException {
+    public WriteReadToFile(String pathToFolder, Prefix prefix, NameOfCitiesAndURLs city) {
         this.pathToFolder = pathToFolder;
         this.prefix = prefix;
         this.city = city;
@@ -23,7 +23,7 @@ public class WriteReadToFile implements WriteReadFile {
     }
 
     private File fileInit() {
-        String pathToFile = pathToFolder + "\\" + prefix.name() + "-" + city.name() + ".csv";
+        String pathToFile = pathToFolder + "\\" + prefix + "-" + city.name() + ".csv";
         return new File(pathToFile);
     }
 
