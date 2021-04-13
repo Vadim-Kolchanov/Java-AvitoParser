@@ -8,7 +8,14 @@ public enum Prefix {
     URLS ("URLs"),
     APARTMENT ("Apartment");
 
-    Prefix(String prefix) {
+    private final String prefix;
 
+    Prefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    @Override
+    public String toString() {
+        return this.prefix;
     }
 }
