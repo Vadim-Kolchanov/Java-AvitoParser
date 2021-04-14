@@ -65,7 +65,7 @@ public class WriteApartmentsToFile implements Headers {
             }
             throw new AllPagesHaveBeenParsingException();
         } catch (AllPagesHaveBeenParsingException ex) {
-            System.out.println("Parser is finished!");
+            System.out.println("\nParse Apartments is finished! For IndexCity: " + indexCity);
             System.out.println(ex.getMessage());
         } catch (InterruptedException ex) {
             ex.printStackTrace();

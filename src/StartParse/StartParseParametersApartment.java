@@ -15,21 +15,21 @@ import java.io.IOException;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class ParseParametersApartment {
+public class StartParseParametersApartment implements StartParse {
 
     private final int indexCity;
     private final NameOfCitiesAndURLs city;
     private final String pathToFolderWithUrls;
     private final String pathToFolderWithApartments;
 
-    public ParseParametersApartment(int indexCity, NameOfCitiesAndURLs city, String pathToFolderWithUrls, String pathToFolderWithApartments) {
+    public StartParseParametersApartment(int indexCity, NameOfCitiesAndURLs city, String pathToFolderWithUrls, String pathToFolderWithApartments) {
         this.indexCity = indexCity;
         this.city = city;
         this.pathToFolderWithUrls = pathToFolderWithUrls;
         this.pathToFolderWithApartments = pathToFolderWithApartments;
     }
 
-    public void startParse() throws IOException {
+    public void startParsing() throws IOException {
         WriteReadFile writeReadToFileWithApartments = new WriteReadToFile(
                 pathToFolderWithApartments,
                 Prefix.APARTMENT,

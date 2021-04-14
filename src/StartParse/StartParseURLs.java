@@ -12,17 +12,17 @@ import java.io.IOException;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class ParseURLs {
+public class StartParseURLs implements StartParse {
 
     private final NameOfCitiesAndURLs city;
     private final String pathToFolderWithUrls;
 
-    public ParseURLs(NameOfCitiesAndURLs city, String pathToFolderWithUrls) {
+    public StartParseURLs(NameOfCitiesAndURLs city, String pathToFolderWithUrls) {
         this.city = city;
         this.pathToFolderWithUrls = pathToFolderWithUrls;
     }
 
-    public void startParse() throws IOException {
+    public void startParsing() throws IOException {
         WriteReadFile writeReadToFileWithURLs = new WriteReadToFile(
                 pathToFolderWithUrls,
                 Prefix.URLS,
