@@ -17,6 +17,8 @@ import java.util.Map;
 public class Main {
 
     private Map<Integer, NameOfCitiesAndURLs> indexesAndCities;
+    private final String pathToFolderWithUrls = "D:\\Java\\JavaParserAvito\\src\\DataParsedPageCity";
+    private final String pathToFolderWithApartments = "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments";
 
     public void initIndexesAndCities() {
         Map<Integer, NameOfCitiesAndURLs> map = new HashMap<>();
@@ -47,27 +49,27 @@ public class Main {
                 case 0 -> isFinished = true;
                 case 1 -> new StartParseURLs(
                                 city,
-                               "D:\\Java\\JavaParserAvito\\src\\DataURLsCity"
+                               solutionMain.pathToFolderWithUrls
                           ).startParsing();
                 case 2 -> new StartParseParametersApartment(
                                 1,
                                 city,
-                               "D:\\Java\\JavaParserAvito\\src\\DataParsedPageCity",
-                               "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments"
+                               solutionMain.pathToFolderWithUrls,
+                               solutionMain.pathToFolderWithApartments
                           ).startParsing();
                 case 3 -> {
                     if (solutionMain.indexesAndCities == null) solutionMain.initIndexesAndCities();
                     new MyThreadsForURLs(
                             solutionMain.indexesAndCities,
-                            "D:\\Java\\JavaParserAvito\\src\\DataURLsCity"
+                            solutionMain.pathToFolderWithUrls
                     ).startThreads();
                 }
                 case 4 -> {
                     if (solutionMain.indexesAndCities == null) solutionMain.initIndexesAndCities();
                     new MyThreadsForApartments(
                             solutionMain.indexesAndCities,
-                            "D:\\Java\\JavaParserAvito\\src\\DataURLsCity",
-                            "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments"
+                            solutionMain.pathToFolderWithUrls,
+                            solutionMain.pathToFolderWithApartments
                     ).startThreads();
                 }
 
