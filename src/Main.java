@@ -20,7 +20,10 @@ public class Main {
     private final String pathToFolderWithUrls = "D:\\Java\\JavaParserAvito\\src\\DataParsedPageCity";
     private final String pathToFolderWithApartments = "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments";
 
-    public void initIndexesAndCities() {
+    private Map<Integer, NameOfCitiesAndURLs> getIndexesAndCities() {
+        if (this.indexesAndCities != null) {
+            return this.indexesAndCities;
+        }
         Map<Integer, NameOfCitiesAndURLs> map = new HashMap<>();
         int index = 1;
         for (NameOfCitiesAndURLs city: NameOfCitiesAndURLs.values()) {
@@ -28,6 +31,7 @@ public class Main {
             index++;
         }
         this.indexesAndCities = map;
+        return map;
     }
 
     public static void main(String[] args) throws Exception {
@@ -58,16 +62,14 @@ public class Main {
                                solutionMain.pathToFolderWithApartments
                           ).startParsing();
                 case 3 -> {
-                    if (solutionMain.indexesAndCities == null) solutionMain.initIndexesAndCities();
                     new MyThreadsForURLs(
-                            solutionMain.indexesAndCities,
+                            solutionMain.getIndexesAndCities(),
                             solutionMain.pathToFolderWithUrls
                     ).startThreads();
                 }
                 case 4 -> {
-                    if (solutionMain.indexesAndCities == null) solutionMain.initIndexesAndCities();
                     new MyThreadsForApartments(
-                            solutionMain.indexesAndCities,
+                            solutionMain.getIndexesAndCities(),
                             solutionMain.pathToFolderWithUrls,
                             solutionMain.pathToFolderWithApartments
                     ).startThreads();
