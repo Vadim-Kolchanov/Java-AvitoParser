@@ -61,24 +61,18 @@ public class Main {
                                solutionMain.pathToFolderWithUrls,
                                solutionMain.pathToFolderWithApartments
                           ).startParsing();
-                case 3 -> {
-                    new MyThreadsForURLs(
-                            solutionMain.getIndexesAndCities(),
-                            solutionMain.pathToFolderWithUrls
-                    ).startThreads();
-                }
-                case 4 -> {
-                    new MyThreadsForApartments(
-                            solutionMain.getIndexesAndCities(),
-                            solutionMain.pathToFolderWithUrls,
-                            solutionMain.pathToFolderWithApartments
-                    ).startThreads();
-                }
-
-                default -> {
-                    System.out.println("Введите другое число");
-                }
+                case 3 -> new MyThreadsForURLs(
+                                solutionMain.getIndexesAndCities(),
+                                solutionMain.pathToFolderWithUrls
+                          ).startThreads();
+                case 4 -> new MyThreadsForApartments(
+                                solutionMain.getIndexesAndCities(),
+                                solutionMain.pathToFolderWithUrls,
+                                solutionMain.pathToFolderWithApartments
+                          ).startThreads();
+                default -> System.out.println("Введите другое число");
             }
+            //adding join() for main Thread
         } while (!isFinished);
     }
 
