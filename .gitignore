@@ -1,6 +1,6 @@
 .idea/*
 out/
-src/DataParsedPageCity
+src/DataParsedApartments
 src/DataURLsCity
 
 src/TestClass.java
