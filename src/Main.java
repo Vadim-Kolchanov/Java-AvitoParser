@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +18,7 @@ import java.util.Map;
  */
 public class Main {
 
+    private List<Thread> listThreads;
     private Map<Integer, NameOfCitiesAndURLs> indexesAndCities;
     private final String pathToFolderWithUrls = "D:\\Java\\JavaParserAvito\\src\\DataURLsCity";
     private final String pathToFolderWithApartments = "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments";
@@ -62,22 +64,24 @@ public class Main {
                                solutionMain.pathToFolderWithUrls,
                                solutionMain.pathToFolderWithApartments
                           ).startParsing();
-                case 3 -> new MyThreads(
-                              solutionMain.getIndexesAndCities(),
-                              new MyThreadsForURLs(
-                                      solutionMain.pathToFolderWithUrls
-                              )
-                          ).startThreads();
-                case 4 -> new MyThreads(
-                              solutionMain.getIndexesAndCities(),
-                              new MyThreadsForApartments(
-                                      solutionMain.pathToFolderWithUrls,
-                                      solutionMain.pathToFolderWithApartments
-                              )
-                          ).startThreads();
+                case 3 -> solutionMain.listThreads = new MyThreads(
+                                                         solutionMain.getIndexesAndCities(),
+                                                         new MyThreadsForURLs(
+                                                                 solutionMain.pathToFolderWithUrls
+                                                         )
+                                                     ).startThreads();
+                case 4 -> solutionMain.listThreads = new MyThreads(
+                                                         solutionMain.getIndexesAndCities(),
+                                                         new MyThreadsForApartments(
+                                                                 solutionMain.pathToFolderWithUrls,
+                                                                 solutionMain.pathToFolderWithApartments
+                                                         )
+                                                     ).startThreads();
                 default -> System.out.println("Введите другое число");
             }
-            //adding join() for main Thread
+            for (Thread thread: solutionMain.listThreads) {
+                thread.join();
+            }
         } while (!isFinished);
     }
 
