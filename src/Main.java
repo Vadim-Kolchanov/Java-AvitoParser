@@ -1,3 +1,4 @@
+import Multithreading.MyThreads;
 import Multithreading.MyThreadsForApartments;
 import Multithreading.MyThreadsForURLs;
 import StartParse.StartParseParametersApartment;
@@ -61,14 +62,18 @@ public class Main {
                                solutionMain.pathToFolderWithUrls,
                                solutionMain.pathToFolderWithApartments
                           ).startParsing();
-                case 3 -> new MyThreadsForURLs(
-                                solutionMain.getIndexesAndCities(),
-                                solutionMain.pathToFolderWithUrls
+                case 3 -> new MyThreads(
+                              solutionMain.getIndexesAndCities(),
+                              new MyThreadsForURLs(
+                                      solutionMain.pathToFolderWithUrls
+                              )
                           ).startThreads();
-                case 4 -> new MyThreadsForApartments(
-                                solutionMain.getIndexesAndCities(),
-                                solutionMain.pathToFolderWithUrls,
-                                solutionMain.pathToFolderWithApartments
+                case 4 -> new MyThreads(
+                              solutionMain.getIndexesAndCities(),
+                              new MyThreadsForApartments(
+                                      solutionMain.pathToFolderWithUrls,
+                                      solutionMain.pathToFolderWithApartments
+                              )
                           ).startThreads();
                 default -> System.out.println("Введите другое число");
             }

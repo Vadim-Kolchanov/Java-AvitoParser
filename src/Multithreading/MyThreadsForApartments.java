@@ -9,14 +9,12 @@ import java.util.Map;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class MyThreadsForApartments implements Threads {
+public class MyThreadsForApartments implements CreateThreads {
 
-    private final Map<Integer, NameOfCitiesAndURLs> indexesAndCities;
     private final String pathToFolderWithUrls;
     private final String pathToFolderWithApartments;
 
-    public MyThreadsForApartments(Map<Integer, NameOfCitiesAndURLs> indexesAndCities, String pathToFolderWithUrls, String pathToFolderWithApartments) {
-        this.indexesAndCities = indexesAndCities;
+    public MyThreadsForApartments(String pathToFolderWithUrls, String pathToFolderWithApartments) {
         this.pathToFolderWithUrls = pathToFolderWithUrls;
         this.pathToFolderWithApartments = pathToFolderWithApartments;
     }
@@ -33,12 +31,5 @@ public class MyThreadsForApartments implements Threads {
                         )
                 )
         );
-    }
-
-    @Override
-    public void startThreads() {
-        for (Map.Entry<Integer, NameOfCitiesAndURLs> entry: indexesAndCities.entrySet()) {
-            createThread(entry).start();
-        }
     }
 }
