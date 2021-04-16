@@ -45,9 +45,13 @@ public class WriteReadToFile implements WriteReadFile {
                                                append
                                        )
                                    )
-        ) {
+      ) {
           writer.write(content);
           writer.flush();
-        }
+      } catch (FileNotFoundException ex) {
+          System.out.println(ex.getMessage());
+          System.out.println("Такой папки не существует! Измените путь к директории!");
+          System.exit(-1);
+      }
     }
 }

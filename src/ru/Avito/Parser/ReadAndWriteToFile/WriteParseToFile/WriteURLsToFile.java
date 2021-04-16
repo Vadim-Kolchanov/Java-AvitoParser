@@ -1,15 +1,12 @@
 package ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile;
 
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
-import ru.Avito.Parser.ContentFile.ContentOfFile;
-import ru.Avito.Parser.ContentFile.StorageContentOfFile;
 import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 import ru.Avito.Parser.Pages.Pagination;
 import ru.Avito.Parser.Parsing.ParsingURLs.ParseURLs;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @Project JavaParserAvito

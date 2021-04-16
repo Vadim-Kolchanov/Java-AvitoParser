@@ -2,7 +2,6 @@ package ru.Avito.Parser.ReadAndWriteToFile;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 
 /**
  * @Project JavaParserAvito

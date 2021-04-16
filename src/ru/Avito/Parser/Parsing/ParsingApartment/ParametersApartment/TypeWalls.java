@@ -16,9 +16,11 @@ import java.util.List;
  */
 public class TypeWalls implements Page {
 
+    private final boolean convertTextToNumber;
     private final Page pageApartment;
 
-    public TypeWalls(Page pageApartment) {
+    public TypeWalls(boolean convertTextToNumber, Page pageApartment) {
+        this.convertTextToNumber = convertTextToNumber;
         this.pageApartment = pageApartment;
     }
 
@@ -39,7 +41,7 @@ public class TypeWalls implements Page {
             typeWalls = typeWallsElement.text()
                     .split(":")[1]
                     .trim();
-            typeWalls = transformTypeWallsInNumber(typeWalls);
+            typeWalls = convertTextToNumber ? transformTypeWallsInNumber(typeWalls) : typeWalls;
         }
         content.add(typeWalls + ";");
         return content;

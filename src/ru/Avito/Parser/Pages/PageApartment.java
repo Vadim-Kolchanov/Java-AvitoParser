@@ -2,10 +2,8 @@ package ru.Avito.Parser.Pages;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import ru.Avito.Parser.Connecting.ConnectToWebSite;
 import ru.Avito.Parser.Connecting.RetryConnectToWebSite;
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,5 +41,4 @@ public class PageApartment implements Page {
     public List<String> getContent() throws IOException {
         return new ArrayList<String>();
     }
-
 }

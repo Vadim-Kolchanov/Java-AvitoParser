@@ -70,6 +70,5 @@ public class WriteApartmentsToFile implements Headers {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-
     }
 }

@@ -17,7 +17,7 @@ import java.util.Map;
 public class Main {
 
     private Map<Integer, NameOfCitiesAndURLs> indexesAndCities;
-    private final String pathToFolderWithUrls = "D:\\Java\\JavaParserAvito\\src\\DataParsedPageCity";
+    private final String pathToFolderWithUrls = "D:\\Java\\JavaParserAvito\\src\\DataURLsCity";
     private final String pathToFolderWithApartments = "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments";
 
     private Map<Integer, NameOfCitiesAndURLs> getIndexesAndCities() {
@@ -95,5 +95,4 @@ public class Main {
             }
         }
    }
-
 }

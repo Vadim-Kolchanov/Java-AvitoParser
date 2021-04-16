@@ -2,8 +2,7 @@ package ru.Avito.Parser.Parsing.ParsingApartment;
 
 import ru.Avito.Parser.Pages.PageApartment;
 import ru.Avito.Parser.Parsing.Parse;
-import ru.Avito.Parser.Parsing.ParsingApartment.ParametersApartment.CoordinatesApartment;
-import ru.Avito.Parser.Parsing.ParsingApartment.ParametersApartment.PriceApartment;
+import ru.Avito.Parser.Parsing.ParsingApartment.ParametersApartment.*;
 import ru.Avito.Parser.actToCollection.ActToList;
 
 import java.io.IOException;
@@ -23,11 +22,31 @@ public class ParseApartment implements Parse {
     @Override
     public String getContentParse() throws IOException {
         return new ActToList(
-                    new PriceApartment(
-                        new CoordinatesApartment(
-                            new PageApartment(url)
-                        )
-                    ).getContent()
+                   new PriceApartment(
+                       new Year(
+                           new Season(
+                               false,
+                               new KitchenArea(
+                                   new LivingSpace(
+                                       new TotalArea(
+                                           new NumberOfFloors(
+                                               new Floor(
+                                                   new NumberOfRooms(
+                                                        new TypeWalls(
+                                                            false,
+                                                            new CoordinatesApartment(
+                                                                new PageApartment(url)
+                                                            )
+                                                        )
+                                                   )
+                                               )
+                                           )
+                                       )
+                                   )
+                               )
+                           )
+                       )
+                   ).getContent()
         ).getStringOfList();
     }
 }
