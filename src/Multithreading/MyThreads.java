@@ -1,5 +1,6 @@
 package Multithreading;
 
+import Multithreading.MyThreadsFor.CreateThreads;
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 
 import java.util.ArrayList;

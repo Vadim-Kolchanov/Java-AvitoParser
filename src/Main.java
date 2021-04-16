@@ -1,6 +1,6 @@
 import Multithreading.MyThreads;
-import Multithreading.MyThreadsForApartments;
-import Multithreading.MyThreadsForURLs;
+import Multithreading.MyThreadsFor.MyThreadsForApartments;
+import Multithreading.MyThreadsFor.MyThreadsForURLs;
 import StartParse.StartParseParametersApartment;
 import StartParse.StartParseURLs;
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;

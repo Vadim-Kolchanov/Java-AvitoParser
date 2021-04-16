@@ -1,4 +1,4 @@
-package Multithreading;
+package Multithreading.MyThreadsFor;
 
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 
