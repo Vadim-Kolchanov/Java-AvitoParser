@@ -8,6 +8,7 @@ import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 public class Main {
 
-    private List<Thread> listThreads;
+    private List<Thread> listThreads = new ArrayList<>();
     private Map<Integer, NameOfCitiesAndURLs> indexesAndCities;
     private final String pathToFolderWithUrls = "D:\\Java\\JavaParserAvito\\src\\DataURLsCity";
     private final String pathToFolderWithApartments = "D:\\Java\\JavaParserAvito\\src\\DataParsedApartments";
