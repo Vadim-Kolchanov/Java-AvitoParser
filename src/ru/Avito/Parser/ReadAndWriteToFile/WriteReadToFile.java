@@ -10,7 +10,6 @@ import java.io.*;
  */
 public class WriteReadToFile implements WriteReadFile {
 
-    private final File file;
     private final String pathToFolder;
     private final Prefix prefix;
     private final NameOfCitiesAndURLs city;
@@ -19,7 +18,6 @@ public class WriteReadToFile implements WriteReadFile {
         this.pathToFolder = pathToFolder;
         this.prefix = prefix;
         this.city = city;
-        this.file = fileInit();
     }
 
     private File fileInit() {
@@ -29,19 +27,19 @@ public class WriteReadToFile implements WriteReadFile {
 
     @Override
     public boolean fileIsEmpty() {
-        return file.length() == 0;
+        return fileInit().length() == 0;
     }
 
     @Override
     public InputStream read() throws IOException {
-        return new FileInputStream(file);
+        return new FileInputStream(fileInit());
     }
 
     @Override
     public void write(String content, boolean append) throws IOException {
       try (BufferedWriter writer = new BufferedWriter(
                                        new FileWriter(
-                                               file,
+                                               fileInit(),
                                                append
                                        )
                                    )

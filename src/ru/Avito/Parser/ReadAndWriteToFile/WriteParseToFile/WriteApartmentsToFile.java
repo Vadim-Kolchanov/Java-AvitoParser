@@ -20,11 +20,10 @@ public class WriteApartmentsToFile implements Headers {
     private final WriteReadFile writeReadToFile;
     private final URLsNeedParsing urlsNeedParsing;
 
-    public WriteApartmentsToFile(int indexCity, WriteReadFile writeReadToFile, URLsNeedParsing urlsNeedParsing) throws IOException {
+    public WriteApartmentsToFile(int indexCity, WriteReadFile writeReadToFile, URLsNeedParsing urlsNeedParsing) {
         this.indexCity = indexCity;
         this.writeReadToFile = writeReadToFile;
         this.urlsNeedParsing = urlsNeedParsing;
-        addHeaders();
     }
 
     @Override
@@ -52,6 +51,7 @@ public class WriteApartmentsToFile implements Headers {
 
     public void write() throws IOException {
         try{
+            addHeaders();
             for (String url: urlsNeedParsing.getURLsForParsing()) {
                 String contentParse = new ParseApartment(url)
                         .getContentParse();
