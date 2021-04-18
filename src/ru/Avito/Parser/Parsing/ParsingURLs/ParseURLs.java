@@ -4,7 +4,6 @@ import ru.Avito.Parser.Connecting.ConnectToWebSite;
 import ru.Avito.Parser.Connecting.RetryConnectToWebSite;
 import ru.Avito.Parser.ContentFile.ContentOfFile;
 import ru.Avito.Parser.ContentFile.StorageContentOfFile;
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 import ru.Avito.Parser.Pages.PageWithApartments;
 import ru.Avito.Parser.Parsing.Parse;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;

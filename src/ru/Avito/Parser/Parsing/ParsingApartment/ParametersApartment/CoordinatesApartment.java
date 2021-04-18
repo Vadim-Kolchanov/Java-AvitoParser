@@ -1,7 +1,6 @@
 package ru.Avito.Parser.Parsing.ParsingApartment.ParametersApartment;
 
 import org.jsoup.select.Elements;
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
 import ru.Avito.Parser.Pages.Page;
 
 import java.io.IOException;

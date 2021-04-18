@@ -3,6 +3,7 @@ package StartParse;
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
 import ru.Avito.Parser.ContentFile.ContentOfFile;
 import ru.Avito.Parser.ContentFile.StorageContentOfFile;
+import ru.Avito.Parser.MyException.ParserFinishedException;
 import ru.Avito.Parser.Parsing.ParsingApartment.URLsNeedParsing;
 import ru.Avito.Parser.ReadAndWriteToFile.Prefix;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile.WriteApartmentsToFile;
@@ -40,21 +41,25 @@ public class StartParseParametersApartment implements StartParse {
                 Prefix.URLS,
                 city
         );
-        new WriteApartmentsToFile(
-                indexCity,
-                writeReadToFileWithApartments,
-                new URLsNeedParsing(
-                        new StorageContentOfFile(
-                                new ContentOfFile(
-                                        writeReadToFileWithURLs
-                                )
-                        ),
-                        new StorageContentOfFile(
-                                new ContentOfFile(
-                                        writeReadToFileWithApartments
-                                )
-                        )
-                )
-        ).write();
+        try {
+            new WriteApartmentsToFile(
+                    indexCity,
+                    writeReadToFileWithApartments,
+                    new URLsNeedParsing(
+                            new StorageContentOfFile(
+                                    new ContentOfFile(
+                                            writeReadToFileWithURLs
+                                    )
+                            ),
+                            new StorageContentOfFile(
+                                    new ContentOfFile(
+                                            writeReadToFileWithApartments
+                                    )
+                            )
+                    )
+            ).write();
+        } catch (ParserFinishedException ex) {
+            System.out.println("\nParse Apartments is finished! For IndexCity: " + indexCity);
+        }
     }
 }

@@ -1,7 +1,7 @@
 package ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile;
 
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
+import ru.Avito.Parser.MyException.ParserFinishedException;
 import ru.Avito.Parser.Pages.Pagination;
 import ru.Avito.Parser.Parsing.ParsingURLs.ParseURLs;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;
@@ -32,7 +32,7 @@ public class WriteURLsToFile {
         this.city = city;
     }
 
-    public void write() throws IOException {
+    public void write() throws IOException, ParserFinishedException {
         try {
             do {
                 writeReadToFile.write(
@@ -44,11 +44,8 @@ public class WriteURLsToFile {
                 );
                 Thread.sleep(3000);
             }
-            while (--pagesLeft != 0);
-            throw new AllPagesHaveBeenParsingException();
-        } catch (AllPagesHaveBeenParsingException ex) {
-            System.out.println("\nParse URLs is finished! For city: " + city.name());
-            System.out.println(ex.getMessage());
+            while (--pagesLeft > 0);
+            throw new ParserFinishedException();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }

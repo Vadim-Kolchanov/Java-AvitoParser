@@ -1,14 +1,12 @@
 package ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile;
 
-import ru.Avito.Parser.MyException.AllPagesHaveBeenParsingException;
+import ru.Avito.Parser.MyException.ParserFinishedException;
 import ru.Avito.Parser.Parsing.ParsingApartment.ParseApartment;
 import ru.Avito.Parser.Parsing.ParsingApartment.URLsNeedParsing;
 import ru.Avito.Parser.ReadAndWriteToFile.Headers;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;
-import ru.Avito.Parser.actToCollection.ActToList;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @Project JavaParserAvito
@@ -49,7 +47,7 @@ public class WriteApartmentsToFile implements Headers {
         }
     }
 
-    public void write() throws IOException {
+    public void write() throws IOException, ParserFinishedException {
         try{
             addHeaders();
             for (String url: urlsNeedParsing.getURLsForParsing()) {
@@ -63,10 +61,7 @@ public class WriteApartmentsToFile implements Headers {
                 );
                 Thread.sleep(3000);
             }
-            throw new AllPagesHaveBeenParsingException();
-        } catch (AllPagesHaveBeenParsingException ex) {
-            System.out.println("\nParse Apartments is finished! For IndexCity: " + indexCity);
-            System.out.println(ex.getMessage());
+            throw new ParserFinishedException();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package StartParse;
 
 import ru.Avito.Parser.Cities.NameOfCitiesAndURLs;
+import ru.Avito.Parser.MyException.ParserFinishedException;
 import ru.Avito.Parser.ReadAndWriteToFile.Prefix;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteParseToFile.WriteURLsToFile;
 import ru.Avito.Parser.ReadAndWriteToFile.WriteReadFile;
@@ -28,10 +29,15 @@ public class StartParseURLs implements StartParse {
                 Prefix.URLS,
                 city
         );
-        new WriteURLsToFile(
-                writeReadToFileWithURLs,
-                1,
-                city
-        ).write();
+        try {
+            new WriteURLsToFile(
+                    writeReadToFileWithURLs,
+                    1,
+                    city
+            ).write();
+        } catch (ParserFinishedException ex) {
+            System.out.println("\nParse URLs is finished! For city: " + city.name());
+        }
+
     }
 }
