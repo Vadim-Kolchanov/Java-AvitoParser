@@ -18,14 +18,14 @@ public class WriteURLsToFile {
     private final NameOfCitiesAndURLs city;
     private int pagesLeft;
 
-    public WriteURLsToFile(WriteReadFile writeReadToFile, int limit, NameOfCitiesAndURLs city) throws IOException {
+    public WriteURLsToFile(WriteReadFile writeReadToFile, int limit, NameOfCitiesAndURLs city) {
         this.writeReadToFile = writeReadToFile;
         this.pagesLeft = new Pagination(city.getURL())
                     .checkLimit(limit);
         this.city = city;
     }
 
-    public WriteURLsToFile(WriteReadFile writeReadToFile, NameOfCitiesAndURLs city) throws IOException {
+    public WriteURLsToFile(WriteReadFile writeReadToFile, NameOfCitiesAndURLs city) {
         this.writeReadToFile = writeReadToFile;
         this.pagesLeft = new Pagination(city.getURL())
                      .getPagination();
