@@ -1,5 +1,6 @@
 package ru.Avito.Parser.Pages;
 
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import ru.Avito.Parser.Connecting.ConnectToWebSite;
 import ru.Avito.Parser.Connecting.RetryConnectToWebSite;
@@ -37,11 +38,16 @@ public class Pagination {
 
     public int getPagination() {
         try {
-            Elements elements = getBlockWithPageNumbers();
-            String href = elements.get(elements.size() - 1)
-                    .attr("href");
+            Element element;
+            if ((element = getBlockWithPageNumbers()) == null) {
+                return 0;
+            }
+            Elements elementChildren = element.children();
+            String href = elementChildren.get(
+                    elementChildren.size() - 1
+            ).attr("href");
             if (href.equals("")) {
-                return 1;
+                return 0;
             }
             String query = new URL("https://www.avito.ru" + href)
                     .getQuery();
@@ -56,14 +62,13 @@ public class Pagination {
 
     }
 
-    public Elements getBlockWithPageNumbers() throws IOException {
+    public Element getBlockWithPageNumbers() throws IOException {
         return new RetryConnectToWebSite(
                    new ConnectToWebSite(urlPage)
-        ).getConnect()
-                .getElementsByAttributeValue(
-                                "class",
-                                "pagination-pages clearfix"
-                ).get(0)
-                .children();
+        ).getConnect(
+
+        ).selectFirst(
+                "div.pagination-hidden-3jtv4 div"
+        );
     }
 }
