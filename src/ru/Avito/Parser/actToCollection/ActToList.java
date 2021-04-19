@@ -1,5 +1,6 @@
 package ru.Avito.Parser.actToCollection;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,5 +21,12 @@ public class ActToList {
             stringBuilder.append(line);
         }
         return stringBuilder.toString();
+    }
+
+    public List<String> removeDuplicate(List<String> contentForRemove) throws IOException {
+        this.list.removeAll(
+                contentForRemove
+        );
+        return this.list;
     }
 }

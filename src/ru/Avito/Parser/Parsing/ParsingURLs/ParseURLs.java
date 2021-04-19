@@ -20,7 +20,6 @@ public class ParseURLs implements Parse {
 
     private final String urlToPageWithApartments;
     private final WriteReadFile writeReadFileWithURLs;
-    private List<String> haveURLsNow;
 
     public ParseURLs(String urlToPageWithApartments, WriteReadFile writeReadFileWithURLs) {
         this.urlToPageWithApartments = urlToPageWithApartments;
@@ -36,26 +35,16 @@ public class ParseURLs implements Parse {
         ).getContent();
     }
 
-    public List<String> removeDuplicate(List<String> content) throws IOException {
-        if (this.haveURLsNow == null) {
-            this.haveURLsNow = getHaveURLsNow();
-        }
-        content.removeAll(
-                this.haveURLsNow
-        );
-        return content;
-    }
-
     @Override
     public String getContentParse() throws IOException {
         return new ActToList(
-                   removeDuplicate(
+                   new ActToList(
                            new PageWithApartments(
                                    new RetryConnectToWebSite(
                                            new ConnectToWebSite(urlToPageWithApartments)
                                    )
                            ).getContent()
-                   )
+                   ).removeDuplicate(getHaveURLsNow())
         ).getStringOfList();
     }
 }
