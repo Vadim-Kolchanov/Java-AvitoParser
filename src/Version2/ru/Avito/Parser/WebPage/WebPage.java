@@ -18,8 +18,7 @@ public class WebPage implements JsoupWeb {
         this.url = url;
     }
 
-    @Override
-    public Connection connect() {
+    private Connection connect() {
         if (url == null || url.equals("")) {
             throw new IllegalArgumentException("Error! Incorrect link!");
         }
