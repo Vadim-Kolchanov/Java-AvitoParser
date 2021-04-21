@@ -21,6 +21,7 @@ public interface JsoupWeb {
 
     final class Fake implements JsoupWeb {
         private final JsoupWeb origin;
+        private final String PATHNAME = "D:\\Java\\JavaParserAvito\\src\\Version2\\MaterialsForFakeClass\\ForJsoupWeb\\avitoHTML-perm-kvartiry-prodam.html";
 
         public Fake(final JsoupWeb origin) {
             this.origin = origin;
@@ -35,7 +36,7 @@ public interface JsoupWeb {
         public Document parsedHTML() throws IOException {
             return Jsoup.parse(
                     new File(
-                            "D:\\Java\\JavaParserAvito\\src\\Version2\\MaterialsForFakeClass\\ForJsoupWeb\\avitoHTML-perm-kvartiry-prodam.html"
+                            PATHNAME
                     ),
                     Charset.defaultCharset().name()
             );
