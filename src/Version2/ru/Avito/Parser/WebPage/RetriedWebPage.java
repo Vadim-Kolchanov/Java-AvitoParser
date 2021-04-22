@@ -14,6 +14,10 @@ public class RetriedWebPage implements JsoupWeb {
     private final JsoupWeb webPage;
     private final int attempts;
 
+    public RetriedWebPage(String url) {
+        this(new WebPage(url));
+    }
+
     public RetriedWebPage(JsoupWeb webPage) {
         this(webPage, 5);
     }
