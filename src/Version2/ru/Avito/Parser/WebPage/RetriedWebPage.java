@@ -29,12 +29,12 @@ public class RetriedWebPage implements JsoupWeb {
 
     @Override
     public Document parsedHTML() throws IOException {
-        if (attempts < 1) {
-            throw new IOException("Error in getting parsedHTML");
-        }
         try {
             return webPage.parsedHTML();
         } catch (IOException ex) {
+            if (attempts < 2) {
+                throw new IOException("Error in getting parsedHTML", ex);
+            }
             System.out.println("Error! Retrying to get parsed HTML. Attempts left: " + this.attempts);
             new SafeThreadSleep(5000).sleep();
             return new RetriedWebPage(this.webPage, this.attempts - 1)
