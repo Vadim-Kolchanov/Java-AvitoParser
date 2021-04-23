@@ -10,7 +10,7 @@ import java.io.IOException;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class WebPage implements JsoupWeb {
+public final class WebPage implements JsoupWeb {
 
     private final String url;
 

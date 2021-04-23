@@ -9,7 +9,7 @@ import java.io.IOException;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class RetriedWebPage implements JsoupWeb {
+public final class RetriedWebPage implements JsoupWeb {
 
     private final JsoupWeb webPage;
     private final int attempts;

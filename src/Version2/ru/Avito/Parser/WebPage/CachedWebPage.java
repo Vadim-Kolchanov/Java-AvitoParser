@@ -8,7 +8,7 @@ import java.io.IOException;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class CachedWebPage implements JsoupWeb {
+public final class CachedWebPage implements JsoupWeb {
 
     private final JsoupWeb webPage;
     private Document parsedHTML;

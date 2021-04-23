@@ -4,7 +4,7 @@ package Version2.ru.Avito.Parser;
  * @Project JavaParserAvito
  * @Author Kolchanov Vadim
  */
-public class SafeThreadSleep {
+public final class SafeThreadSleep {
 
     private final long millis;
 
