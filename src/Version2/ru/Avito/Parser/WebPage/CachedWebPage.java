@@ -2,11 +2,10 @@ package Version2.ru.Avito.Parser.WebPage;
 
 import org.jsoup.nodes.Document;
 
-import java.io.IOException;
-
 /**
- * @Project JavaParserAvito
  * @Author Kolchanov Vadim
+ *
+ * Класс - декоратор, кэширует результаты методов
  */
 public final class CachedWebPage implements JsoupWeb {
 
@@ -17,11 +16,16 @@ public final class CachedWebPage implements JsoupWeb {
         this.webPage = webPage;
     }
 
+    /**
+     * @return преобразованную html страницу
+     * @throws Exception
+     */
     @Override
-    public Document parsedHTML() throws IOException {
+    public Document parsedHTML() throws Exception {
         if (this.parsedHTML == null) {
             this.parsedHTML = webPage.parsedHTML();
         }
+
         return this.parsedHTML;
     }
 }
