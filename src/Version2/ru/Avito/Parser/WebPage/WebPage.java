@@ -17,10 +17,6 @@ public final class WebPage implements JsoupWeb {
         this.url = url;
     }
 
-    /**
-     * Метод устанавливает соединение с веб страницой
-     * @return соединение с веб-страницой
-     */
     private Connection connect() {
         if (url == null || url.equals("")) {
             throw new IllegalArgumentException("Error! Incorrect link!");
