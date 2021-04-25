@@ -1,5 +1,6 @@
 package Version2.ru.Avito.Parser.WebPage;
 
+import Version2.ru.Avito.Parser.Exceptions.HtmlNotParsedException;
 import org.jsoup.nodes.Document;
 
 /**
@@ -18,10 +19,10 @@ public final class CachedWebPage implements JsoupWeb {
 
     /**
      * @return преобразованную html страницу
-     * @throws Exception
+     * @throws HtmlNotParsedException когда метод не смог распарсить html
      */
     @Override
-    public Document parsedHTML() throws Exception {
+    public Document parsedHTML() throws HtmlNotParsedException {
         if (this.parsedHTML == null) {
             this.parsedHTML = webPage.parsedHTML();
         }
