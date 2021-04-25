@@ -8,12 +8,12 @@ import org.jsoup.nodes.Document;
  *
  * Класс - декоратор, кэширует результаты методов
  */
-public final class CachedWebPage implements JsoupWeb {
+public final class JWebCached implements JsoupWeb {
 
     private final JsoupWeb webPage;
     private Document parsedHTML;
 
-    public CachedWebPage(JsoupWeb webPage) {
+    public JWebCached(JsoupWeb webPage) {
         this.webPage = webPage;
     }
 

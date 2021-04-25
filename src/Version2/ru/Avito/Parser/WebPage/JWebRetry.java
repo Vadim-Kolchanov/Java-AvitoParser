@@ -9,22 +9,22 @@ import java.util.List;
 /**
  * @Author Kolchanov Vadim
  *
- * Класс - декоратор, в случае выброса исключений в методах,
- * повторяет их вызов через {@link RetriedWebPage#TIME_WAITING} секунд,
- * пока попытки не достигнут максимума {@link RetriedWebPage#MAX_NUMBERS_OF_ATTEMPTS}
+ * Класс - декоратор, не приведет к немедленному сбою при исключении,
+ * а повторит попытку через {@link JWebRetry#TIME_WAITING} секунд,
+ * пока попытки не достигнут максимума {@link JWebRetry#MAX_NUMBERS_OF_ATTEMPTS}
  */
-public final class RetriedWebPage implements JsoupWeb {
+public final class JWebRetry implements JsoupWeb {
 
     private final static long TIME_WAITING = 5000L;
     private final static int MAX_NUMBERS_OF_ATTEMPTS = 5;
 
     private final JsoupWeb webPage;
 
-    public RetriedWebPage(final String url) {
+    public JWebRetry(final String url) {
         this(new WebPage(url));
     }
 
-    public RetriedWebPage(final JsoupWeb webPage) {
+    public JWebRetry(final JsoupWeb webPage) {
         this.webPage = webPage;
     }
 
