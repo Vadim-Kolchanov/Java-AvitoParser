@@ -22,7 +22,9 @@ public final class WebPage implements JsoupWeb {
 
     private Connection connect() {
         if (url == null || url.equals("")) {
-            throw new IllegalArgumentException("Error! Incorrect link!");
+            throw new IllegalArgumentException(
+                    String.format("Error! Incorrect link: %s", url)
+            );
         }
 
         return Jsoup.connect(url);
