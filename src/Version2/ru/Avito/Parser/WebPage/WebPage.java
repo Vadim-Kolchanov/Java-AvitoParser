@@ -40,7 +40,8 @@ public final class WebPage implements JsoupWeb {
         } catch (IOException ex) {
             throw new HtmlNotParsedException(
                     String.format("Error in parsing html. URL to html: %s", url),
-                    ex);
+                    ex
+            );
         }
 
     }
