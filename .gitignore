@@ -2,6 +2,7 @@
 out/
 src/DataParsedApartments
 src/DataURLsCity
+src/test/resources
 
 src/TestClass.java
 
