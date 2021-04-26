@@ -11,7 +11,7 @@ import org.jsoup.nodes.Document;
 public final class JWebCached implements JsoupWeb {
 
     private final JsoupWeb webPage;
-    private Document parsedHTML;
+    private Document CachedParsedHTML;
 
     public JWebCached(JsoupWeb webPage) {
         this.webPage = webPage;
@@ -23,10 +23,10 @@ public final class JWebCached implements JsoupWeb {
      */
     @Override
     public Document parsedHTML() throws HtmlNotParsedException {
-        if (this.parsedHTML == null) {
-            this.parsedHTML = webPage.parsedHTML();
+        if (this.CachedParsedHTML == null) {
+            this.CachedParsedHTML = webPage.parsedHTML();
         }
 
-        return this.parsedHTML;
+        return this.CachedParsedHTML;
     }
 }
