@@ -21,24 +21,30 @@
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JsoupWeb.Fake" target="Version2.ru.Avito.Parser.WebPage.JsoupWeb.Fake" relationship="DEPENDENCY">
       <point x="0.0" y="51.0" />
-      <point x="111.5" y="239.0" />
-      <point x="0.0" y="239.0" />
-      <point x="0.0" y="168.0" />
+      <point x="111.5" y="213.28571428571428" />
+      <point x="42.85714285714289" y="213.28571428571428" />
+      <point x="42.85714285714289" y="168.0" />
       <point x="-91.5" y="-0.0" />
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JWebRetry" target="Version2.ru.Avito.Parser.WebPage.JsoupWeb" relationship="TO_ONE">
       <point x="89.0" y="-106.0" />
       <point x="566.6057692307693" y="261.0" />
       <point x="692.5" y="261.0" />
-      <point x="692.5" y="86.0" />
-      <point x="665.3076923076923" y="86.0" />
-      <point x="665.3076923076923" y="76.0" />
+      <point x="692.5" y="76.0" />
       <point x="446.5" y="76.0" />
       <point x="61.0" y="28.0" />
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JWebCached" target="Version2.ru.Avito.Parser.WebPage.JsoupWeb" relationship="REALIZATION">
       <point x="-53.75" y="-62.0" />
       <point x="520.75" y="86.0" />
+      <point x="394.75" y="86.0" />
+      <point x="394.75" y="76.0" />
+      <point x="385.5" y="76.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="Version2.ru.Avito.Parser.WebPage.WebPage" target="Version2.ru.Avito.Parser.WebPage.JsoupWeb" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="334.5" y="86.0" />
       <point x="394.75" y="86.0" />
       <point x="394.75" y="76.0" />
       <point x="385.5" y="76.0" />
@@ -54,26 +60,15 @@
       <point x="385.5" y="76.0" />
       <point x="0.0" y="28.0" />
     </edge>
-    <edge source="Version2.ru.Avito.Parser.WebPage.WebPage" target="Version2.ru.Avito.Parser.WebPage.JsoupWeb" relationship="REALIZATION">
-      <point x="0.0" y="-62.0" />
-      <point x="334.5" y="86.0" />
-      <point x="394.75" y="86.0" />
-      <point x="394.75" y="76.0" />
-      <point x="385.5" y="76.0" />
-      <point x="0.0" y="28.0" />
-    </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JWebCached" target="Version2.ru.Avito.Parser.WebPage.JWebCached" relationship="DEPENDENCY">
       <point x="0.0" y="62.0" />
-      <point x="574.5" y="250.0" />
-      <point x="447.0" y="250.0" />
-      <point x="447.0" y="168.0" />
+      <point x="467.0" y="230.0" />
+      <point x="467.0" y="168.0" />
       <point x="-107.5" y="-0.0" />
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JWebCached" target="Version2.ru.Avito.Parser.WebPage.JsoupWeb" relationship="TO_ONE">
       <point x="53.75" y="-62.0" />
-      <point x="628.25" y="86.0" />
-      <point x="665.3076923076923" y="86.0" />
-      <point x="665.3076923076923" y="76.0" />
+      <point x="628.25" y="76.0" />
       <point x="446.5" y="76.0" />
       <point x="61.0" y="28.0" />
     </edge>
@@ -85,16 +80,16 @@
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.WebPage" target="Version2.ru.Avito.Parser.WebPage.WebPage" relationship="DEPENDENCY">
       <point x="-45.75" y="62.0" />
-      <point x="288.75" y="250.0" />
-      <point x="223.0" y="250.0" />
-      <point x="223.0" y="168.0" />
+      <point x="288.75" y="220.0" />
+      <point x="252.0" y="220.0" />
+      <point x="252.0" y="168.0" />
       <point x="-91.5" y="-0.0" />
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JWebRetry" target="Version2.ru.Avito.Parser.WebPage.JWebRetry" relationship="DEPENDENCY">
       <point x="0.0" y="106.0" />
-      <point x="477.6057692307692" y="514.0" />
-      <point x="324.1057692307692" y="514.0" />
-      <point x="324.1057692307692" y="388.0" />
+      <point x="477.6057692307692" y="484.0" />
+      <point x="358.39148351648356" y="484.0" />
+      <point x="358.39148351648356" y="388.0" />
       <point x="-133.5" y="-0.0" />
     </edge>
     <edge source="Version2.ru.Avito.Parser.WebPage.JWebRetry" target="Version2.ru.Avito.Parser.WebPage.WebPage" relationship="CREATE">
@@ -104,7 +99,7 @@
       <point x="45.75" y="62.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="454.0" y="159.0" />
+  <settings layout="Hierarchic" zoom="0.7" showDependencies="true" x="751.0" y="200.0" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>
