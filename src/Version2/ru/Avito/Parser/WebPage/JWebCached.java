@@ -13,7 +13,7 @@ public final class JWebCached implements JsoupWeb {
     private final JsoupWeb webPage;
     private Document CachedParsedHTML;
 
-    public JWebCached(JsoupWeb webPage) {
+    public JWebCached(final JsoupWeb webPage) {
         this.webPage = webPage;
     }
 
